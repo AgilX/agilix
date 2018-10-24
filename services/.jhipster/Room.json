@@ -1,0 +1,27 @@
+{
+    "name": "Room",
+    "fields": [
+        {
+            "fieldName": "roomName",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "service",
+            "otherEntityName": "service",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181024225905",
+    "entityTableName": "room",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "services",
+    "applications": "*",
+    "microserviceName": "services"
+}

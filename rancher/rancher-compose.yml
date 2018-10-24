@@ -1,0 +1,32 @@
+version: '2'
+services:
+    lb:
+        # load balancer container
+        scale: 1
+        load_balancer_config:
+          name: lb config
+        health_check:
+          port: 42
+          interval: 2000
+          unhealthy_threshold: 3
+          healthy_threshold: 2
+          response_timeout: 2000
+    gateway-app:
+        scale: 1
+    gateway-mongodb:
+        scale: 1
+    
+    uaa-app:
+        scale: 1
+    uaa-mongodb:
+        scale: 1
+    uaa-elasticsearch:
+        scale: 1
+    
+
+
+    consul:
+        scale: 1
+    consul-config-loader:
+        scale: 1
+

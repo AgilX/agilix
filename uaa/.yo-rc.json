@@ -1,0 +1,35 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "fr.agilix.uaa",
+      "nativeLanguage": "fr"
+    },
+    "jhipsterVersion": "5.5.0",
+    "applicationType": "uaa",
+    "baseName": "uaa",
+    "packageName": "fr.agilix.uaa",
+    "packageFolder": "fr/agilix/uaa",
+    "serverPort": "9999",
+    "authenticationType": "uaa",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": "consul",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "languages": [
+      "fr"
+    ],
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "clientPackageManager": "npm",
+    "nativeLanguage": "fr",
+    "skipClient": true
+  }
+}

@@ -1,0 +1,39 @@
+{
+    "name": "Service",
+    "fields": [
+        {
+            "fieldName": "serviceName",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "room",
+            "otherEntityName": "room",
+            "otherEntityRelationshipName": "service"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "nurse",
+            "otherEntityName": "nurse",
+            "otherEntityRelationshipName": "service"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "patient",
+            "otherEntityName": "patient",
+            "otherEntityRelationshipName": "service"
+        }
+    ],
+    "changelogDate": "20181024225904",
+    "entityTableName": "service",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "services",
+    "applications": "*",
+    "microserviceName": "services"
+}

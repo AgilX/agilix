@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "fr.agilix.services",
+      "nativeLanguage": "fr"
+    },
+    "jhipsterVersion": "5.5.0",
+    "applicationType": "microservice",
+    "baseName": "services",
+    "packageName": "fr.agilix.services",
+    "packageFolder": "fr/agilix/services",
+    "serverPort": "8081",
+    "authenticationType": "uaa",
+    "uaaBaseName": "uaa",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": "consul",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": true,
+    "jwtSecretKey": "MGUxM2JkODc5OWRjZWQ3OGMzZGRhY2NhYTRhNjI4NTE1ZWUyYmIzOGZmYTA0ZDc5ZmE5MDhmOTEyOWIzMDgyM2M2YmEwNTFiNGUyZDg4MDQzYmQ4MGNiYjQzMGM0ODYyNzFjYmI3MDI0MWY3NTUzMDIxZmFlOTczOTY5OTgzOWQ=",
+    "enableTranslation": true,
+    "languages": [
+      "fr",
+      "en"
+    ],
+    "testFrameworks": [
+      "gatling",
+      "cucumber"
+    ],
+    "jhiPrefix": "jhi",
+    "clientPackageManager": "npm",
+    "nativeLanguage": "fr",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}

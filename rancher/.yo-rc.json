@@ -1,0 +1,15 @@
+{
+  "generator-jhipster": {
+    "appsFolders": [
+      "gateway",
+      "uaa"
+    ],
+    "directoryPath": "../",
+    "monitoring": "prometheus",
+    "serviceDiscoveryType": "consul",
+    "jwtSecretKey": "NDM5YWRiNjNkNGVhZmU4NjkzNzg5M2U4M2Q0Mzc1ZDVkYTQ1NGE0NDlhZmNjZWY5YTViZGU2ZjM3YjY4NjIwMmQ2MWUyNzIyMTkzZGNjMmUyY2U1YTQzNmIyN2U4MDg3OWU1Zg==",
+    "dockerRepositoryName": "agilix",
+    "dockerPushCommand": "docker push",
+    "enableRancherLoadBalancing": true
+  }
+}

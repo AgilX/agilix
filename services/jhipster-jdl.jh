@@ -1,0 +1,30 @@
+entity Service {
+	serviceName String
+}
+
+entity Room {
+	roomName String
+}
+
+entity Nurse {
+	firstName String,
+    lastName String
+}
+
+entity Patient {
+	firstName String,
+    lastName String,
+    pathology String,
+    birthDate Instant,
+    gender GENDER
+}
+
+enum GENDER {
+	MALE, FEMALE
+}
+
+relationship OneToMany {
+	Service{room} to Room,
+    Service{nurse} to Nurse,
+    Service{patient} to Patient
+}

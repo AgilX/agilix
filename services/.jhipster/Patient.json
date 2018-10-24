@@ -1,0 +1,44 @@
+{
+    "name": "Patient",
+    "fields": [
+        {
+            "fieldName": "firstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pathology",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "birthDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "GENDER",
+            "fieldValues": "MALE,FEMALE"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "service",
+            "otherEntityName": "service",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181024225907",
+    "entityTableName": "patient",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "services",
+    "applications": "*",
+    "microserviceName": "services"
+}

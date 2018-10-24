@@ -1,0 +1,77 @@
+version: '2'
+services:
+    lb:
+      image: rancher/load-balancer-service
+      ports:
+        # Listen on public port 80 and direct traffic to private port 8080 of the service
+        - 80:8080
+      links:
+        # Target services in the same stack will be listed as a link
+        - gateway-app:gateway-app
+    gateway-app:
+        image: agilix/gateway
+        environment:
+            - _JAVA_OPTIONS=-Xmx512m -Xms256m
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_CLOUD_CONSUL_HOST=consul
+            - SPRING_CLOUD_CONSUL_PORT=8500
+            - SPRING_DATA_MONGODB_URI=mongodb://gateway-mongodb:27017
+            - SPRING_DATA_MONGODB_DATABASE=gateway
+            - JHIPSTER_SLEEP=10
+            - JHIPSTER_METRICS_PROMETHEUS_ENABLED=true
+            - JHIPSTER_METRICS_PROMETHEUS_ENDPOINT=/prometheusMetrics
+        ports:
+            - 8080:8080
+    gateway-mongodb:
+        image: mongo:4.0.2
+    
+    uaa-app:
+        image: agilix/uaa
+        environment:
+            - _JAVA_OPTIONS=-Xmx512m -Xms256m
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_CLOUD_CONSUL_HOST=consul
+            - SPRING_CLOUD_CONSUL_PORT=8500
+            - SPRING_DATA_MONGODB_URI=mongodb://uaa-mongodb:27017
+            - SPRING_DATA_MONGODB_DATABASE=uaa
+            - JHIPSTER_SLEEP=10
+            - SPRING_DATA_JEST_URI=http://uaa-elasticsearch:9200
+            - JHIPSTER_METRICS_PROMETHEUS_ENABLED=true
+            - JHIPSTER_METRICS_PROMETHEUS_ENDPOINT=/prometheusMetrics
+    uaa-mongodb:
+        image: mongo:4.0.2
+    uaa-elasticsearch:
+        image: elasticsearch:5.6.5
+        command: -Enetwork.host=0.0.0.0 -Ediscovery.type=single-node
+        environment:
+            - ES_JAVA_OPTS=-Xms1024m -Xmx1024m
+    
+    consul:
+        image: consul:1.2.3
+        ports:
+            - 8300:8300
+            - 8500:8500
+            - 8600:8600
+        command: consul agent -dev -ui -client 0.0.0.0
+    consul-config-loader:
+        image: jhipster/consul-config-loader:v0.3.0
+        environment:
+            - INIT_SLEEP_SECONDS=5
+            - CONSUL_URL=consul
+            - CONSUL_PORT=8500
+        volumes:
+          - /config
+        volumes_from:
+          - registry-config-sidekick
+        labels:
+          io.rancher.sidekicks: registry-config-sidekick
+    registry-config-sidekick:
+        # this docker image must be built with:
+        # docker build -t agilix/registry-config-sidekick registry-config-sidekick
+        image: agilix/registry-config-sidekick
+        tty: true
+        stdin_open: true
+        command:
+          - cat
+        volumes:
+          - config:/config
