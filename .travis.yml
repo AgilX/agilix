@@ -7,3 +7,5 @@ branches:
    - master
 notifications:
    email: false
+script:
+   - './build_travis.sh'
