@@ -2,10 +2,24 @@ language: java
 jdk:
    - oraclejdk8
    - openjdk8
+matrix:
+  include:
+    - language: python
+      python: '2.7'
+      before_script:
+        - pip install docker
+      script:
+        - './ci/molecule_build.sh'
+    - language: java
+      jdk: oraclejdk8
+      script:
+        - './ci/java_build.sh'
+    - language: java
+      jdk: openjdk8
+      script:
+        - './ci/java_build.sh'
 branches:
    only:
    - master
 notifications:
    email: false
-script:
-   - './build_travis.sh'

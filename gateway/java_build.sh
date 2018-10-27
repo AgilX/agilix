@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd gateway
+echo "should build gateway"
 ./mvnw test -B
