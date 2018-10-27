@@ -1,0 +1,90 @@
+#############################################
+# github.com/newlight77/ubuntu [customization
+
+# some more ls aliases
+alias ll='ls -larth'
+alias la='ls -A'
+alias l='ls -CF'
+alias cd..='cd ..'
+alias s='cd ..'
+
+alias stopDockerMin='docker stop docker_enterprise-api_1 docker_provisioning_1 docker_mediation_1 docker_datastore_1'
+alias restartDockerMin='docker restart docker_enterprise-api_1 docker_provisioning_1 docker_mediation_1 docker_datastore_1'
+
+alias cleanDocker='/Hub/tools/docker/docker_cleanup.sh'
+alias stopDocker='/Hub/tools/docker/stop_env.sh'
+alias startDocker='/Hub/tools/docker/run_env.sh'
+alias startDockerHsb='startDocker -b=hsb -l -c; docker ps'
+alias startDockerHsbMin='startDocker -b=hsb -l -c; stopDockerMin; docker ps'
+alias startDockerHsbFull='startDocker -b=hsb -l -c; docker ps'
+
+alias enterprise='cd /Hub/enterprise/front'
+alias surveyTemplate='cd /Hub/enterprise/survey-templates'
+alias dockerCd='cd /Hub/tools/docker'
+alias dreddCd='cd /Hub/tools/dredd'
+
+alias gulpEnt='enterprise && gulp --remote'
+alias gulpEntDocker='enterprise && gulp --remote=10004'
+
+alias add='git add'
+alias branch='git branch'
+alias checkout='git checkout'
+alias cherrypick='git cherry-pick'
+alias commit='git commit -a'
+alias log='git log'
+alias merge='git merge'
+alias publish='git publish'
+alias pull='git pull'
+alias push='git push'
+alias rebase='git rebase'
+alias status='git status'
+alias pullMaster='git pull --rebase origin master'
+alias checkoutMaster='git checkout master'
+
+alias wks='cd ~/wks'
+alias hub='cd /Hub'
+
+alias mvn-package='mvn clean package'
+alias mvn-package-skip-test='mvn clean package -DskipTests'
+alias mvn-install='mvn clean install'
+alias mvn-install-skip-test='mvn clean install -DskipTests'
+alias mvn-test='mvn test'
+alias mvnInstall='mvn clean install -DskipTests'
+
+alias java_conf='/Hub/quickstart/scripts/java_conf.sh'
+alias java_conf-docker='/Hub/quickstart/scripts/java_conf.sh -e=tomcat-docker'
+alias java_conf-int='/Hub/quickstart/scripts/java_conf.sh -e=tomcat-int'
+alias java_conf-qa='/Hub/quickstart/scripts/java_conf.sh -e=tomcat-qa'
+alias java_conf-rec='/Hub/quickstart/scripts/java_conf.sh -e=tomcat-rec'
+
+alias cigate='ssh cigate'
+alias intgate='ssh intgate'
+alias qagate='ssh qagate'
+alias recgate='ssh recgate'
+
+alias inttunnel='ssh intgate_tunnel'
+alias qagtunnel='ssh qagate_tunnel'
+alias rectunnel='ssh recgate_tunnel'
+
+alias inttunnel-java_conf='java_conf-int && ssh intgate_tunnel'
+alias qagtunnel-java_conf='java_conf-qa && ssh qagate_tunnel'
+alias rectunnel-java_conf='java_conf-rec && ssh recgate_tunnel'
+
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+alias docker-clean=' \
+  docker ps --no-trunc -aqf "status=exited" | xargs docker rm ; \
+  docker images --no-trunc -aqf "dangling=true" | xargs docker rmi ; \
+  docker volume ls -qf "dangling=true" | xargs docker volume rm'
+
+# github.com/newlight77/ubuntu customization]
+#############################################

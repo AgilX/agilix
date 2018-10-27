@@ -1,4 +1,4 @@
 ---
 # tasks file for agilix.bash-customization
 - name: Bash customization
-  shell: "{{ playbook_dir }}/script/customize.sh > {{ playbook_dir }}/bash-customization.log"
+  shell: "{{ playbook_dir }}/scripts/customize.sh > {{ playbook_dir }}/bash-customization.log"
