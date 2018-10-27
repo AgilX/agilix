@@ -4,7 +4,7 @@
 folders=`find . -type f -name "java_build.sh"`
 
 for folder in ${folders[@]}; do
-  echo 'should test java ${folder}'
+  echo 'should test java $folder'
   cd $folder
   ./java_build.sh
 done
