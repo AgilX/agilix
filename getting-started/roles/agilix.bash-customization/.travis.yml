@@ -1,0 +1,61 @@
+---
+
+language: python
+python: '2.7'
+
+matrix:
+  include:
+    - env:
+      - ANSIBLE_VERSION=2.3.3
+      - MOLECULE_SCENARIO=default
+    - env:
+      - ANSIBLE_VERSION=2.3.3
+      - MOLECULE_SCENARIO=debian-min
+    - env:
+      - ANSIBLE_VERSION=2.3.3
+      - MOLECULE_SCENARIO=debian-max
+    - env:
+      - ANSIBLE_VERSION=2.3.3
+      - MOLECULE_SCENARIO=ubuntu-min
+    - env:
+      - ANSIBLE_VERSION=2.4.4
+      - MOLECULE_SCENARIO=default
+    - env:
+      - ANSIBLE_VERSION=2.4.4
+      - MOLECULE_SCENARIO=debian-min
+    - env:
+      - ANSIBLE_VERSION=2.4.4
+      - MOLECULE_SCENARIO=debian-max
+    - env:
+      - ANSIBLE_VERSION=2.4.4
+      - MOLECULE_SCENARIO=ubuntu-min
+
+sudo: required
+
+dist: trusty
+
+services:
+  - docker
+
+cache:
+  - pip
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -o Dpkg::Options::='force-confold' --force-yes -y docker-ce
+
+install:
+  - pip install "ansible~=$ANSIBLE_VERSION"
+  - pip install 'docker<3.0'
+  - pip install 'molecule==2.12.1'
+  - ansible --version
+  - molecule --version
+  - molecule create --scenario-name=$MOLECULE_SCENARIO
+  - molecule destroy --scenario-name=$MOLECULE_SCENARIO
+
+script:
+  - molecule test --scenario-name=$MOLECULE_SCENARIO
+
+branches:
+  only:
+    - master
