@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # List all folders contains java_build.sh file
-folders=`find . -type f -name "java_build.sh"`
+folders=`find . -type f -name "java_build.sh" -exec dirname {} \;`
 
 for folder in ${folders[@]}; do
   echo 'should test java $folder'
