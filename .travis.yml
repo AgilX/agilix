@@ -5,15 +5,15 @@ matrix:
       before_script:
         - pip install docker
       script:
-        - './ci/molecule_build.sh'
+        - './ci/main_molecule_build.sh'
     - language: java
       jdk: oraclejdk8
       script:
-        - './ci/java_build.sh'
+        - './ci/main_java_build.sh'
     - language: java
       jdk: openjdk8
       script:
-        - './ci/java_build.sh'
+        - './ci/main_java_build.sh'
 branches:
    only:
    - master
