@@ -7,4 +7,4 @@
     - config.yml
 
   roles:
-    - role: agilix.bash-customization
+    - agilix.bash-customization
