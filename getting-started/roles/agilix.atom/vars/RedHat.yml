@@ -1,0 +1,6 @@
+---
+
+atom_platform: x86_64
+atom_pkg_suffix: rpm
+atom_pkg_infix: .
+atom_pkg_installer: rpm

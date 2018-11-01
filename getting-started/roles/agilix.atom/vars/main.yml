@@ -1,0 +1,6 @@
+---
+
+atom_pkg: atom{{atom_pkg_infix}}{{atom_platform}}.{{atom_pkg_suffix}}
+atom_pkg_url: '{{atom_mirror}}/v{{atom_ver}}/{{atom_pkg}}'
+atom_tmp_pkg: /tmp/atom{{atom_pkg_infix}}{{atom_platform}}-{{atom_ver}}.{{atom_pkg_suffix}}
+atom_pkg_checksum: '{{atom_checksums[atom_ver][atom_pkg_suffix]}}'

@@ -1,0 +1,6 @@
+---
+
+atom_platform: amd64
+atom_pkg_suffix: deb
+atom_pkg_infix: '-'
+atom_pkg_installer: apt
