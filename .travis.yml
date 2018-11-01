@@ -8,7 +8,7 @@ matrix:
       script:
         - './ci/main_molecule_build.sh'
     - language: python
-      python: '3.4'
+      python: '3.6'
       before_script:
         - pip install docker
         - pip install molecule
