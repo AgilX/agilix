@@ -2,3 +2,5 @@
 # tasks file for agilix.bash-customization
 - name: Bash customization
   shell: "{{ playbook_dir }}/scripts/customize.sh > {{ playbook_dir }}/bash-customization.log"
+  changed_when: false
+  failed_when: false
