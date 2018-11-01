@@ -9,7 +9,7 @@
         name: '{{ item }}'
         state: present
         home: '/home/{{ item }}'
-        createhome: yes
+        createhome: true
       with_items:
         - test_usr
 

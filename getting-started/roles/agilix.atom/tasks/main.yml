@@ -12,4 +12,5 @@
       paths:
         - '{{role_path}}/vars'
 
-- include_tasks: '{{ atom_pkg_installer|default("rpm") }}.yml'
+- name: Execute distribution atom installation
+  include: '{{ atom_pkg_installer|default("apt") }}.yml'
