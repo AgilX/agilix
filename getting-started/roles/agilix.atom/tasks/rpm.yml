@@ -1,0 +1,68 @@
+---
+
+- name: (RedHat) Get the installed Atom version
+  changed_when: false
+  failed_when: false
+  shell: "dpkg -s atom | grep '^Version:' | cut -d ' ' -f 2"
+  register: atom_installed_version_return
+
+- name: (RedHat) Check if Atom version variable is defined
+  set_fact:
+    atom_installed_ver: "{{ atom_installed_version_return.stdout|default('0') }}"
+
+- name: (RedHat) Uninstall Atom if needed
+  apt:
+    name: atom
+    state: absent
+  when: "atom_installed_ver != atom_ver"
+
+- name: (RedHat) Check if Atom and Atom Package Manager (APM) are still atom
+  changed_when: false
+  command: which atom apm
+  failed_when: false
+  register: atom_apm_return_value
+
+- name: (RedHat) Download Atom
+  get_url:
+    url: "{{ atom_pkg_url }}"
+    dest: "{{ atom_tmp_pkg }}"
+  when: atom_apm_return_value.rc
+
+- name: (RedHat) Install Atom
+  become: true
+  become_user: root
+  yum:
+    name: "{{ atom_tmp_pkg }}"
+    state: present
+  when: atom_apm_return_value.rc
+
+- name: (RedHat) Delete Atom temp file
+  file:
+    path: "{{ atom_tmp_pkg }}"
+    state: absent
+
+- name: (RedHat) Install Atom packages
+  become: agilix_atom_become_users|length > 0
+  become_user: "{{ item.0.username }}"
+  changed_when: "'Already installed.' not in apm_result.stdout"
+  shell: >
+    apm list --bare | grep -E '^{{ item.1 }}@'
+    && echo 'Already installed.'
+    || apm install '{{ item.1 }}'
+  with_subelements:
+    - "{{ agilix_atom_become_users }}"
+    - atom_packages
+    - skip_missing: yes
+  register: apm_result
+
+- name: (RedHat) Upgrade Atom packages
+  become: agilix_atom_become_users|length > 0
+  become_user: "{{ item.0.username }}"
+  changed_when: "item.1 in agilix_atom_upgrade_pkgs_result.stdout"
+  command: apm upgrade --no-confirm {{ item.1 }}
+  register: agilix_atom_upgrade_pkgs_result
+  when: atom_upgrade_all_packages
+  with_subelements:
+    - "{{ agilix_atom_become_users }}"
+    - atom_packages
+    - skip_missing: yes
