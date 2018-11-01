@@ -11,7 +11,7 @@
     atom_installed_ver: "{{ atom_installed_version_return.stdout|default('0') }}"
 
 - name: (RedHat) Uninstall Atom if needed
-  apt:
+  dnf:
     name: atom
     state: absent
   when: "atom_installed_ver != atom_ver"
@@ -31,7 +31,7 @@
 - name: (RedHat) Install Atom
   become: true
   become_user: root
-  yum:
+  dnf:
     name: "{{ atom_tmp_pkg }}"
     state: present
   when: atom_apm_return_value.rc
