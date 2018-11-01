@@ -52,7 +52,7 @@
   with_subelements:
     - "{{ agilix_atom_become_users }}"
     - atom_packages
-    - skip_missing: yes
+    - skip_missing: true
   register: apm_result
 
 - name: (RedHat) Upgrade Atom packages
@@ -65,4 +65,4 @@
   with_subelements:
     - "{{ agilix_atom_become_users }}"
     - atom_packages
-    - skip_missing: yes
+    - skip_missing: true

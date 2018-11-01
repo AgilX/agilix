@@ -4,7 +4,7 @@
 
   pre_tasks:
     - name: create test user
-      become: yes
+      become: true
       user:
         name: '{{ item }}'
         state: present
