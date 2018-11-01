@@ -2,7 +2,7 @@
 # tasks file for agilix.atom
 
 - name: Resolve platform specific vars
-  include_vars: '{{item}}'
+  include_vars: '{{ item }}'
   with_first_found:
     - files:
         - '{{ansible_distribution}}-{{ansible_distribution_release}}.yml'
@@ -11,3 +11,5 @@
       skip: true
       paths:
         - '{{role_path}}/vars'
+
+- include_tasks: '{{ atom_pkg_installer|default("rpm") }}.yml'
