@@ -7,6 +7,13 @@ matrix:
         - pip install molecule
       script:
         - './ci/main_molecule_build.sh'
+    - language: python
+      python: '3.4'
+      before_script:
+        - pip install docker
+        - pip install molecule
+      script:
+        - './ci/main_molecule_build.sh'
     - language: java
       jdk: oraclejdk8
       script:
