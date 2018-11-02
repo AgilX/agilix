@@ -6,8 +6,6 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: fedora-25
-    image: fedora:25
   - name: debian-8
     image: debian:8
   - name: debian-9
