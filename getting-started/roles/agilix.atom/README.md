@@ -1,7 +1,7 @@
-Role Name
+agilix.atom
 =========
 
-A brief description of the role goes here.
+An Ansible role that install and configure [Atom](https://atom.io/).
 
 Requirements
 ------------
@@ -13,11 +13,21 @@ good idea to mention in this section that the boto package is required.
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including
-any variables that are in defaults/main.yml, vars/main.yml, and any variables
-that can/should be set via parameters to the role. Any variables that are read
-from other roles and/or the global scope (ie. hostvars, group vars, etc.) should
-be mentioned here as well.
+See [defaults/main.yml](defaults/main.yml).
+
+```
+atom_ver: Atom version to install
+agilix_atom_become_users: List of users for which Atom packages should be installed
+atom_upgrade_all_packages: If 'true' all packages will be upgraded to the last version
+`̀ `
+
+Example of use:
+
+agilix_atom_become_users:
+  - atom_packages:
+      - ansible-galaxy@0.2.1
+      - behave-step
+    username: primael
 
 Dependencies
 ------------
@@ -29,6 +39,18 @@ are used from other roles.
 Example Playbook
 ----------------
 
+```
+- hosts: all
+  roles:
+    - agilix.atom
+      agilix_atom_become_users:
+        - atom_packages:
+            - ansible-galaxy@0.2.1
+            - behave-step
+          username: primael
+     atom_ver: 1.32.0
+     atom_upgrade_all_packages: false
+``̀
 Including an example of how to use your role (for instance, with variables
 passed in as parameters) is always nice for users too:
 
@@ -44,5 +66,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a
-website (HTML is not allowed).
+Agil'X team

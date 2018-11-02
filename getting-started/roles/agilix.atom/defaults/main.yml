@@ -2,10 +2,5 @@
 # defaults file for agilix.atom
 atom_ver: '1.31.1'
 atom_mirror: https://github.com/atom/atom/releases/download
-atom_checksums:
-  '1.31.1':
-    deb: sha256:6bf99fe2b1c745f31c8e5efda1b3d78612f09453040e23792a6e9016e045c853
-    rpm: sha256:63790d86852418f372e0f32bd8390d5dde809dfad8e7b697d8729213357d6638
 agilix_atom_become_users: []
-# If 'yes' all installed Atom packages will be upgrated to the latest version
 atom_upgrade_all_packages: true
