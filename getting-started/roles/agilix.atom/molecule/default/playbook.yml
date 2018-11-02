@@ -15,3 +15,7 @@
 
   roles:
     - role: agilix.atom
+      agilix_atom_become_users:
+        - atom_packages:
+            - behave-step
+          username: test_usr
