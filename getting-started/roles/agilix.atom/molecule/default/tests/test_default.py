@@ -13,6 +13,7 @@ def test_hosts_file(host):
     assert f.user == 'root'
     assert f.group == 'root'
 
+
 def test_config(host):
     config_file = host.file('/home/test_usr/.atom/config.cson')
 
