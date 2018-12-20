@@ -1,5 +1,6 @@
-# agilix
-
+<br>
+  <img height=125 src="https://github.com/AgilX/images/blob/master/logo.svg">
+<br>
 [![Build Status](https://travis-ci.org/AgilX/agilix.svg?branch=master)](https://travis-ci.org/AgilX/agilix)
 
 We believe that health services need a modern, free and open source collaborative tool based on [Agile Manifesto values and principles](http://agilemanifesto.org).
