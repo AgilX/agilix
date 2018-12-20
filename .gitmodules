@@ -1,0 +1,3 @@
+[submodule "project_images"]
+	path = project_images
+	url = https://github.com/AgilX/images.git
